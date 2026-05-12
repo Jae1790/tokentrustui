@@ -1458,5 +1458,54 @@
      .modal-reward-grid, .modal-kv-grid { grid-template-columns: 1fr; }
      .node-stats { grid-template-columns: repeat(2, 1fr) !important; }
      .node-stat--wide { grid-column: span 1; }
+     .flow-svg { height: 260px; }
    }
+
+/* ── Flow Diagram ───────────────────────── */
+.flow-diagram-wrap {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px 20px 12px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.flow-diagram-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flow-eyebrow {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 4px;
+  opacity: 0.7;
+}
+
+.flow-svg {
+  width: 100%;
+  max-width: 600px;
+  height: 300px;
+}
+
+.flow-label {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  fill: var(--text-secondary);
+  font-weight: 500;
+}
+
+.flow-label--center {
+  font-size: 10px;
+  fill: #0066FF;
+  font-weight: 600;
+}
+
+.flow-node { cursor: default; }
+
 
