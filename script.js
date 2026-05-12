@@ -665,6 +665,90 @@ document.addEventListener('click', e => {
 });
 
 /* ──────────────────────────────────────────
+   FLOW DIAGRAM
+   ────────────────────────────────────────── */
+function buildFlowDiagram() {
+  const wrap = document.getElementById('flow-diagram');
+  if (!wrap) return;
+
+  const W = 600, H = 340;
+  const cx = W / 2, cy = H / 2 - 10;
+  const R = 138;
+
+  const nodes = [
+    { key: 'claude',   label: 'Claude',   icon: './claude.svg' },
+    { key: 'gemini',   label: 'Gemini',   icon: './gemini.svg' },
+    { key: 'openai',   label: 'GPT-4o',   icon: './openai.svg' },
+    { key: 'mistral',  label: 'Mistral',  icon: './mistral.svg' },
+    { key: 'cohere',   label: 'Cohere',   icon: './cohere.svg' },
+  ];
+
+  const angles = nodes.map((_, i) => -Math.PI / 2 + (2 * Math.PI * i) / nodes.length);
+  const pts = angles.map(a => ({
+    x: cx + R * Math.cos(a),
+    y: cy + R * Math.sin(a),
+  }));
+
+  const BLUE = '#0066FF';
+  const GREY = '#D1D5DB';
+
+  /* build animated path for each spoke */
+  const paths = pts.map((p, i) => {
+    const id = `fp-${nodes[i].key}`;
+    const dur = (2.4 + i * 0.35).toFixed(2);
+    const begin = (i * 0.48).toFixed(2);
+    return `
+      <path id="${id}" d="M ${cx} ${cy} L ${p.x} ${p.y}"
+            stroke="${GREY}" stroke-width="1.5" fill="none" stroke-dasharray="6 5"/>
+      <circle r="4" fill="${BLUE}" opacity="0.9">
+        <animateMotion dur="${dur}s" repeatCount="indefinite" begin="${begin}s">
+          <mpath href="#${id}"/>
+        </animateMotion>
+      </circle>
+      <circle r="3" fill="${BLUE}" opacity="0.5">
+        <animateMotion dur="${dur}s" repeatCount="indefinite" begin="${(parseFloat(begin) + parseFloat(dur) * 0.5).toFixed(2)}s">
+          <mpath href="#${id}"/>
+        </animateMotion>
+      </circle>`;
+  }).join('');
+
+  /* outer nodes */
+  const outerNodes = pts.map((p, i) => `
+    <g class="flow-node" transform="translate(${p.x},${p.y})">
+      <circle r="28" fill="#fff" stroke="${GREY}" stroke-width="1.5"/>
+      <image href="${nodes[i].icon}" x="-13" y="-13" width="26" height="26"/>
+      <text y="42" text-anchor="middle" class="flow-label">${nodes[i].label}</text>
+    </g>`).join('');
+
+  wrap.innerHTML = `
+    <div class="flow-diagram-inner">
+      <p class="flow-eyebrow">Live Value Flow · Real-time</p>
+      <svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" class="flow-svg" aria-hidden="true">
+        <defs>
+          <radialGradient id="center-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="${BLUE}" stop-opacity="0.12"/>
+            <stop offset="100%" stop-color="${BLUE}" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        ${paths}
+
+        <!-- center glow -->
+        <circle cx="${cx}" cy="${cy}" r="52" fill="url(#center-glow)"/>
+
+        <!-- center node -->
+        <g transform="translate(${cx},${cy})">
+          <circle r="36" fill="#fff" stroke="${BLUE}" stroke-width="2"/>
+          <image href="./toekntrust logo.svg" x="-18" y="-18" width="36" height="36"/>
+          <text y="52" text-anchor="middle" class="flow-label flow-label--center">TokenTrust</text>
+        </g>
+
+        ${outerNodes}
+      </svg>
+    </div>`;
+}
+
+/* ──────────────────────────────────────────
    INIT
    ────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
@@ -672,7 +756,9 @@ document.addEventListener('DOMContentLoaded', () => {
   buildDestinations();
   buildTransfers();
   buildEarningSourceLayer();
+  buildFlowDiagram();
 
   setTimeout(runCountUps, 400);
   countUpFired = true;
 });
+
