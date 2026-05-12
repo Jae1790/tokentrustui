@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TokenTrust — AI Data Sovereignty Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+
+    <!-- ═══════════════ SIDEBAR ═══════════════ -->
+    <aside class="sidebar">
+      <div class="sidebar__brand">
+        <div class="brand__logo">
+          <img src="./toekntrust logo.svg" alt="tokentrust logo" width="28" height="28">
+        </div>
+        <div class="brand__text">
+          <span class="brand__name">tokentrust</span>
+          <span class="brand__ver">v2.0</span>
+        </div>
+      </div>
+
+      <div class="sidebar__section-label">Menu</div>
+      <nav class="sidebar__nav">
+        <button class="nav__item active" data-section="dashboard">
+          <span class="nav__icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+              <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+            </svg>
+          </span>
+          <span class="nav__label">Dashboard</span>
+        </button>
+        <button class="nav__item" data-section="return">
+          <span class="nav__icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </span>
+          <span class="nav__label">Return</span>
+        </button>
+        <button class="nav__item" data-section="flow">
+          <span class="nav__icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/>
+              <path d="M12 7v4M5 17l5-4M19 17l-5-4"/>
+            </svg>
+          </span>
+          <span class="nav__label">Data Flow</span>
+        </button>
+        <button class="nav__item" data-section="settings">
+          <span class="nav__icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+          </span>
+          <span class="nav__label">Settings</span>
+        </button>
+      </nav>
+
+      <div class="sidebar__footer">
+        <div class="user-card">
+          <div class="user-card__avatar">AX</div>
+          <div class="user-card__info">
+            <p class="user-card__name">Alex</p>
+            <p class="user-card__email">alex@tokentrust.io</p>
+          </div>
+          <div class="user-card__status"></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ═══════════════ MOBILE NAV ═══════════════ -->
+    <nav class="mobile-nav">
+      <button class="mnav__item active" data-section="dashboard">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+          <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+        </svg>
+        <span>Dashboard</span>
+      </button>
+      <button class="mnav__item" data-section="return">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+        </svg>
+        <span>Return</span>
+      </button>
+      <button class="mnav__item" data-section="flow">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/>
+          <path d="M12 7v4M5 17l5-4M19 17l-5-4"/>
+        </svg>
+        <span>Flow</span>
+      </button>
+      <button class="mnav__item" data-section="settings">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+        <span>Settings</span>
+      </button>
+    </nav>
+
+    <!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+    <main class="main">
+
+      <!-- ──────────── DASHBOARD ──────────── -->
+      <section class="page page--active" id="section-dashboard">
+
+        <header class="page__header">
+          <div>
+            <p class="page__eyebrow">Monday, May 12, 2026</p>
+            <h1 class="page__title">Good morning, Alex 👋</h1>
+          </div>
+          <div class="header__actions">
+            <button class="btn btn--secondary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Export
+            </button>
+            <button class="btn btn--primary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add Token
+            </button>
+          </div>
+        </header>
+
+        <!-- Value Origin Card -->
+        <div class="card value-origin">
+          <div class="value-origin__header">
+            <div>
+              <p class="value-origin__eyebrow">Value Generation</p>
+              <h3 class="value-origin__title">Value Generated From Data</h3>
+            </div>
+            <span class="chip">Data-Driven, Not Purchased</span>
+          </div>
+          <div class="value-origin__items">
+            <div class="value-origin__item">
+              <div class="value-origin__item-left">
+                <div class="ai-avatar vo-avatar"><img src="./claude.svg" width="16" height="16"></div>
+                <div>
+                  <span class="vo-name">Claude</span>
+                  <span class="vo-src">Behavioral Data</span>
+                </div>
+              </div>
+              <div class="value-origin__item-right">
+                <div class="vo-bar-wrap"><div class="vo-bar" style="width:58%"></div></div>
+                <span class="vo-pct">58%</span>
+                <span class="vo-dqi vo-dqi--up">DQI +12%</span>
+              </div>
+            </div>
+            <div class="value-origin__item">
+              <div class="value-origin__item-left">
+                <div class="ai-avatar vo-avatar"><img src="./gemini.svg" width="16" height="16"></div>
+                <div>
+                  <span class="vo-name">Gemini</span>
+                  <span class="vo-src">Preference Data</span>
+                </div>
+              </div>
+              <div class="value-origin__item-right">
+                <div class="vo-bar-wrap"><div class="vo-bar vo-bar--mid" style="width:27%"></div></div>
+                <span class="vo-pct">27%</span>
+                <span class="vo-dqi vo-dqi--up">DQI +7%</span>
+              </div>
+            </div>
+            <div class="value-origin__item">
+              <div class="value-origin__item-left">
+                <div class="ai-avatar vo-avatar"><img src="./openai.svg" width="16" height="16"></div>
+                <div>
+                  <span class="vo-name">GPT-4o</span>
+                  <span class="vo-src">Usage Patterns</span>
+                </div>
+              </div>
+              <div class="value-origin__item-right">
+                <div class="vo-bar-wrap"><div class="vo-bar vo-bar--low" style="width:15%"></div></div>
+                <span class="vo-pct">15%</span>
+                <span class="vo-dqi vo-dqi--dn">DQI −3%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- KPI Hero Row -->
+        <div class="kpi-hero">
+
+          <!-- Balance Card -->
+          <div class="card kpi-hero__card kpi-hero__card--featured">
+            <div class="kpi__meta">
+              <span class="kpi__label">Total Balance</span>
+              <span class="badge badge--green">↑ 12.4% this month</span>
+            </div>
+            <div class="kpi__value-row">
+              <span class="kpi__value" id="counter-balance">0</span>
+              <span class="kpi__unit">TKTR</span>
+            </div>
+            <p class="kpi__sub">≈ $29.02 CAD · updated just now</p>
+            <p class="kpi__origin">Generated from data contributions, not purchase</p>
+            <div class="sparkline-container">
+              <svg class="sparkline" viewBox="0 0 320 64" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="spark-fill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#2563EB" stop-opacity="0.15"/>
+                    <stop offset="100%" stop-color="#2563EB" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <path d="M0,52 C30,48 55,50 80,42 C105,34 130,38 160,28 C190,18 210,22 240,14 C260,8 285,10 320,5" stroke="#2563EB" stroke-width="2" fill="none"/>
+                <path d="M0,52 C30,48 55,50 80,42 C105,34 130,38 160,28 C190,18 210,22 240,14 C260,8 285,10 320,5 L320,64 L0,64Z" fill="url(#spark-fill)"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- DQI Card -->
+          <div class="card kpi-hero__card">
+            <div class="kpi__meta">
+              <span class="kpi__label">DQI Score</span>
+              <span class="badge badge--blue">Top 6%</span>
+            </div>
+            <div class="kpi__value-row">
+              <span class="kpi__value" id="counter-dqi">0.0</span>
+              <span class="kpi__unit">/ 100</span>
+            </div>
+            <p class="kpi__sub">Data Quality Index</p>
+            <div class="dqi-bar-wrap">
+              <div class="dqi-bar-track">
+                <div class="dqi-bar-fill" id="dqi-fill"></div>
+              </div>
+              <div class="dqi-bar-labels">
+                <span>0</span>
+                <span>Excellent &gt;90</span>
+                <span>100</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Secondary KPI Row -->
+        <div class="kpi-row">
+          <div class="card kpi-mini">
+            <div class="kpi-mini__icon kpi-mini__icon--blue">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v4M5 17l5-4M19 17l-5-4"/></svg>
+            </div>
+            <div>
+              <p class="kpi-mini__val">7</p>
+              <p class="kpi-mini__lbl">Active Nodes</p>
+            </div>
+          </div>
+          <div class="card kpi-mini">
+            <div class="kpi-mini__icon kpi-mini__icon--purple">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <p class="kpi-mini__val">Balanced</p>
+              <p class="kpi-mini__lbl">Privacy Mode · 1.0×</p>
+            </div>
+          </div>
+          <div class="card kpi-mini">
+            <div class="kpi-mini__icon kpi-mini__icon--green">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div>
+              <p class="kpi-mini__val">23</p>
+              <p class="kpi-mini__lbl">Sessions this month</p>
+            </div>
+          </div>
+          <div class="card kpi-mini">
+            <div class="kpi-mini__icon kpi-mini__icon--orange">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            </div>
+            <div>
+              <p class="kpi-mini__val">4.2 <span class="kpi-mini__unit">GB</span></p>
+              <p class="kpi-mini__lbl">Data Shared</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Token Holdings -->
+        <div class="card card--table">
+          <div class="card__header">
+            <div class="card__header-left">
+              <h2 class="card__title">Token Holdings</h2>
+              <span class="chip">Demand-Weighted</span>
+            </div>
+            <a href="#" class="link-action" onclick="return false">View all →</a>
+          </div>
+
+          <div class="token-table">
+            <div class="token-table__head">
+              <span>Asset</span>
+              <span>Holdings</span>
+              <span>Multiplier</span>
+              <span>Change</span>
+              <span>Allocation</span>
+            </div>
+
+            <!-- Claude -->
+            <div class="token-row token-row--top" data-key="claude" style="cursor:pointer" title="Click to inspect data source">
+              <div class="token-row__asset">
+                <div class="ai-avatar">
+                  <img src="./claude.svg" alt="Claude" width="22" height="22">
+                </div>
+                <div>
+                  <p class="token-row__name">Claude</p>
+                  <p class="token-row__org">Anthropic · LLM Training</p>
+                </div>
+              </div>
+              <div class="token-row__holdings">842 <span class="token-unit">TKTR</span></div>
+              <div class="token-row__mult">
+                <span class="mult-badge">×2.74</span>
+              </div>
+              <div class="token-row__change change--up">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+                +18.2%
+              </div>
+              <div class="token-row__bar">
+                <div class="alloc-bar">
+                  <div class="alloc-bar__fill" style="width:58%"></div>
+                </div>
+                <span class="alloc-pct">58%</span>
+              </div>
+            </div>
+
+            <!-- Gemini -->
+            <div class="token-row" data-key="gemini" style="cursor:pointer" title="Click to inspect data source">
+              <div class="token-row__asset">
+                <div class="ai-avatar">
+                  <img src="./gemini.svg" alt="Gemini" width="22" height="22">
+                </div>
+                <div>
+                  <p class="token-row__name">Gemini</p>
+                  <p class="token-row__org">Google DeepMind · Analysis</p>
+                </div>
+              </div>
+              <div class="token-row__holdings">391 <span class="token-unit">TKTR</span></div>
+              <div class="token-row__mult">
+                <span class="mult-badge mult-badge--dim">×1.32</span>
+              </div>
+              <div class="token-row__change change--up">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+                +4.1%
+              </div>
+              <div class="token-row__bar">
+                <div class="alloc-bar">
+                  <div class="alloc-bar__fill" style="width:27%"></div>
+                </div>
+                <span class="alloc-pct">27%</span>
+              </div>
+            </div>
+
+            <!-- OpenAI -->
+            <div class="token-row" data-key="openai" style="cursor:pointer" title="Click to inspect data source">
+              <div class="token-row__asset">
+                <div class="ai-avatar">
+                  <img src="./openai.svg" alt="OpenAI" width="22" height="22">
+                </div>
+                <div>
+                  <p class="token-row__name">GPT-4o</p>
+                  <p class="token-row__org">OpenAI · Usage Patterns</p>
+                </div>
+              </div>
+              <div class="token-row__holdings">217 <span class="token-unit">TKTR</span></div>
+              <div class="token-row__mult">
+                <span class="mult-badge mult-badge--dim">×1.05</span>
+              </div>
+              <div class="token-row__change change--dn">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                −2.3%
+              </div>
+              <div class="token-row__bar">
+                <div class="alloc-bar">
+                  <div class="alloc-bar__fill" style="width:15%"></div>
+                </div>
+                <span class="alloc-pct">15%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Earning Source Layer (populated by JS) -->
+        <div id="earning-source-layer" style="margin-bottom:16px"></div>
+
+        <!-- Recommendation Banner -->
+        <div class="rec-banner">
+          <div class="rec-banner__icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div class="rec-banner__body">
+            <p class="rec-banner__title">Portfolio Optimization Opportunity</p>
+            <p class="rec-banner__text">Claude holdings are concentrated at 58%. Diversifying toward Gemini could improve balance efficiency and reduce single-asset risk by an estimated 14%.</p>
+          </div>
+          <button class="btn btn--primary btn--sm">Optimize Now →</button>
+        </div>
+
+      </section>
+
+      <!-- ──────────── RETURN ──────────── -->
+      <section class="page" id="section-return">
+        <header class="page__header">
+          <div>
+            <p class="page__eyebrow">Value Recirculation · Data Economy</p>
+            <h1 class="page__title">Return</h1>
+          </div>
+        </header>
+
+        <div class="kpi-row kpi-row--2">
+          <div class="card kpi-stat">
+            <p class="kpi__label">Total Earned (Lifetime)</p>
+            <p class="kpi__value kpi__value--lg" style="color:var(--text-1);font-weight:600">1,450</p>
+            <p class="kpi__sub">TKTR · from data contributions, not purchase</p>
+            <div class="empty-bar" style="background:linear-gradient(90deg,#60A5FA,#2563EB);opacity:0.4"></div>
+          </div>
+          <div class="card kpi-stat">
+            <p class="kpi__label">This Month</p>
+            <p class="kpi__value kpi__value--lg" style="color:var(--text-1);font-weight:600">284</p>
+            <p class="kpi__sub">TKTR · 14 contributions · avg 91% retained</p>
+            <div class="empty-bar" style="background:linear-gradient(90deg,#34D399,#16A34A);width:60%;opacity:0.4"></div>
+          </div>
+        </div>
+
+        <div class="card card--table">
+          <div class="card__header">
+            <div class="card__header-left">
+              <h2 class="card__title">Transaction History</h2>
+              <span class="chip">20 records</span>
+            </div>
+            <div class="table-filter">
+              <button class="filter-btn filter-btn--active">All</button>
+              <button class="filter-btn">Pending</button>
+              <button class="filter-btn">Complete</button>
+            </div>
+          </div>
+          <div class="table-scroll">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Source</th>
+                  <th>Type</th>
+                  <th style="text-align:right">Amount</th>
+                  <th style="text-align:right">Status</th>
+                </tr>
+              </thead>
+              <tbody id="tx-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ──────────── DATA FLOW ──────────── -->
+      <section class="page" id="section-flow">
+        <header class="page__header">
+          <div>
+            <p class="page__eyebrow">Value Flow Infrastructure · Not Data Transfer</p>
+            <h1 class="page__title">Data Flow</h1>
+          </div>
+          <span class="status-pill">
+            <span class="status-dot"></span>
+            7 Active Destinations
+          </span>
+        </header>
+
+        <div class="dest-grid" id="dest-grid"></div>
+
+        <div class="card card--table">
+          <div class="card__header">
+            <h2 class="card__title">Recent Transfers</h2>
+            <span class="chip">Last 7 days</span>
+          </div>
+          <div id="transfer-list"></div>
+        </div>
+      </section>
+
+      <!-- ──────────── SETTINGS ──────────── -->
+      <section class="page" id="section-settings">
+        <header class="page__header">
+          <div>
+            <p class="page__eyebrow">Preferences</p>
+            <h1 class="page__title">Account Settings</h1>
+          </div>
+        </header>
+
+        <!-- Regulatory Compliance -->
+        <div class="card settings-block regulatory-block">
+          <h3 class="settings-block__title">Regulatory Status</h3>
+          <div class="reg-badges">
+            <span class="reg-badge reg-badge--active">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              PIPEDA Compliant
+            </span>
+            <span class="reg-badge reg-badge--active">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              FINTRAC Registered
+            </span>
+            <span class="reg-badge reg-badge--active">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              Cross-border Ready
+            </span>
+          </div>
+          <p class="reg-desc">All data transactions comply with Canadian PIPEDA privacy regulations. Token flows are registered under FINTRAC guidelines for digital asset reporting. Cross-border value transfer is enabled for all 7 active partners.</p>
+        </div>
+
+        <!-- Profile -->
+        <div class="card settings-block">
+          <h3 class="settings-block__title">Profile</h3>
+          <div class="profile-row">
+            <div class="profile-avatar">AX</div>
+            <div class="profile-info">
+              <p class="profile-info__name">Alex</p>
+              <p class="profile-info__email">alex@tokentrust.io</p>
+              <p class="profile-info__since">Member since January 2025</p>
+            </div>
+            <button class="btn btn--secondary btn--sm">Edit Profile</button>
+          </div>
+        </div>
+
+        <!-- Privacy Slider -->
+        <div class="card settings-block">
+          <h3 class="settings-block__title">Privacy Level</h3>
+          <p class="settings-block__desc">Control how your behavioral data is shared with AI training partners. Sensitive information (SSN, medical, financial) is always protected and never shared.</p>
+
+          <div class="priv-control">
+            <div class="priv-steps">
+              <div class="priv-step" data-step="0">
+                <div class="priv-step__dot"></div>
+                <span class="priv-step__name">Strict</span>
+                <span class="priv-step__sub">Zero-Knowledge</span>
+                <span class="priv-step__compliance">PIPEDA Tier 1</span>
+              </div>
+              <div class="priv-step priv-step--active" data-step="1">
+                <div class="priv-step__dot"></div>
+                <span class="priv-step__name">Balanced</span>
+                <span class="priv-step__sub">1.0× Reward</span>
+                <span class="priv-step__compliance">PIPEDA Tier 2</span>
+              </div>
+              <div class="priv-step" data-step="2">
+                <div class="priv-step__dot"></div>
+                <span class="priv-step__name">Open</span>
+                <span class="priv-step__sub">Max Earnings</span>
+                <span class="priv-step__compliance">PIPEDA Tier 3</span>
+              </div>
+            </div>
+            <input type="range" id="privacy-slider" class="priv-slider" min="0" max="2" step="1" value="1" />
+          </div>
+
+          <!-- Node Status -->
+          <div class="node-status" id="node-status">
+            <div class="node-status__head">
+              <div class="node-status__led" id="node-led"></div>
+              <span class="node-status__mode" id="node-mode">Balanced Mode</span>
+              <span class="node-status__tag" id="node-tag">Active</span>
+            </div>
+            <p class="node-status__desc" id="node-desc">
+              Anonymized behavioral data is shared with selected AI partners. Sensitive data is always encrypted and never exposed.
+            </p>
+            <div class="node-stats">
+              <div class="node-stat">
+                <span class="node-stat__label">Reward Rate</span>
+                <span class="node-stat__value" id="ns-reward">1.0×</span>
+              </div>
+              <div class="node-stat">
+                <span class="node-stat__label">Data Shared</span>
+                <span class="node-stat__value" id="ns-data">Behavioral</span>
+              </div>
+              <div class="node-stat">
+                <span class="node-stat__label">ZK Proof</span>
+                <span class="node-stat__value" id="ns-zk">Partial</span>
+              </div>
+              <div class="node-stat">
+                <span class="node-stat__label">Encryption</span>
+                <span class="node-stat__value" id="ns-enc">AES-256</span>
+              </div>
+              <div class="node-stat node-stat--wide">
+                <span class="node-stat__label">Compliance Level</span>
+                <span class="node-stat__value" id="ns-compliance">Standard Compliance</span>
+              </div>
+              <div class="node-stat node-stat--wide">
+                <span class="node-stat__label">Regulatory Mode</span>
+                <span class="node-stat__value node-stat__value--reg" id="ns-regmode">PIPEDA Tier 2 — Anonymized</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Settings -->
+        <div class="card settings-block">
+          <h3 class="settings-block__title">More Settings</h3>
+          <ul class="settings-list">
+            <li class="settings-row">
+              <div>
+                <p class="settings-row__name">Data Preferences</p>
+                <p class="settings-row__desc">Manage eligible data types for sharing</p>
+              </div>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </li>
+            <li class="settings-row">
+              <div>
+                <p class="settings-row__name">Refund Analytics</p>
+                <p class="settings-row__desc">Detailed earnings breakdown by source</p>
+              </div>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </li>
+            <li class="settings-row">
+              <div>
+                <p class="settings-row__name">Export My Data</p>
+                <p class="settings-row__desc">Download full history as JSON or CSV</p>
+              </div>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </li>
+            <li class="settings-row">
+              <div>
+                <p class="settings-row__name">Connected Wallets</p>
+                <p class="settings-row__desc">Manage on-chain payout addresses</p>
+              </div>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </li>
+          </ul>
+        </div>
+
+        <p class="page__footer">TokenTrust v2.0 · © 2026 Michael Joongmin Park</p>
+      </section>
+
+    </main>
+
+    <!-- ═══════════════ MODAL A — Data Source Detail ═══════════════ -->
+    <div class="modal" id="modal-data-source">
+      <div class="modal__overlay"></div>
+      <div class="modal__panel">
+        <div class="modal__header">
+          <div class="modal__header-icon" id="ds-modal-icon"></div>
+          <div class="modal__header-text">
+            <h2 class="modal__title" id="ds-modal-name">—</h2>
+            <p class="modal__subtitle" id="ds-modal-srctype">—</p>
+          </div>
+          <button class="modal__close" aria-label="Close">✕</button>
+        </div>
+        <div class="modal__body">
+          <div class="modal__section">
+            <h3 class="modal__section-title">Data Types Used</h3>
+            <div class="modal-chips" id="ds-modal-types"></div>
+          </div>
+          <div class="modal__section">
+            <h3 class="modal__section-title">DQI Breakdown</h3>
+            <div id="ds-modal-dqi"></div>
+          </div>
+          <div class="modal__section">
+            <h3 class="modal__section-title">Reward Calculation Logic</h3>
+            <div class="modal-reward-grid">
+              <div class="modal-reward-item">
+                <span class="modal-reward-label">Base Rate</span>
+                <span class="modal-reward-val" id="ds-modal-baserate">—</span>
+              </div>
+              <div class="modal-reward-item">
+                <span class="modal-reward-label">DQI Multiplier</span>
+                <span class="modal-reward-val val--blue" id="ds-modal-multiplier">—</span>
+              </div>
+              <div class="modal-reward-item">
+                <span class="modal-reward-label">Monthly Earnings</span>
+                <span class="modal-reward-val val--green" id="ds-modal-earnings">—</span>
+              </div>
+              <div class="modal-reward-item">
+                <span class="modal-reward-label">DQI Impact</span>
+                <span class="modal-reward-val" id="ds-modal-dqi-impact">—</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════ MODAL B — Refund Detail ═══════════════ -->
+    <div class="modal" id="modal-refund">
+      <div class="modal__overlay"></div>
+      <div class="modal__panel">
+        <div class="modal__header">
+          <div class="modal__header-text">
+            <h2 class="modal__title">Return Detail</h2>
+            <p class="modal__subtitle" id="rf-modal-date">—</p>
+          </div>
+          <span class="modal-tag" id="rf-modal-tag">—</span>
+          <button class="modal__close" aria-label="Close">✕</button>
+        </div>
+        <div class="modal__body">
+          <div class="modal__section">
+            <h3 class="modal__section-title">Return Origin</h3>
+            <div class="modal-kv-grid">
+              <div class="modal-kv">
+                <span class="modal-kv__label">Source</span>
+                <span class="modal-kv__val" id="rf-modal-source">—</span>
+              </div>
+              <div class="modal-kv">
+                <span class="modal-kv__label">Return Reason</span>
+                <span class="modal-kv__val" id="rf-modal-reason">—</span>
+              </div>
+            </div>
+          </div>
+          <div class="modal__section">
+            <h3 class="modal__section-title">Value Flow After Return</h3>
+            <div class="modal-kv-grid">
+              <div class="modal-kv">
+                <span class="modal-kv__label">Original Amount</span>
+                <span class="modal-kv__val" id="rf-modal-original">—</span>
+              </div>
+              <div class="modal-kv">
+                <span class="modal-kv__label">Retained Value</span>
+                <span class="modal-kv__val val--green" id="rf-modal-retained-amt">—</span>
+              </div>
+              <div class="modal-kv">
+                <span class="modal-kv__label">Retention Rate</span>
+                <span class="modal-kv__val" id="rf-modal-retained-pct">—</span>
+              </div>
+              <div class="modal-kv">
+                <span class="modal-kv__label">Refunded Amount</span>
+                <span class="modal-kv__val val--red" id="rf-modal-refunded-amt">—</span>
+              </div>
+            </div>
+          </div>
+          <div class="modal__section">
+            <h3 class="modal__section-title">Reallocation Target</h3>
+            <div class="modal-realloc-box">
+              <span class="modal-realloc-arrow" id="rf-modal-realloc">—</span>
+              <p class="modal-realloc-desc">Returned value is automatically reallocated to the highest-demand partner in your portfolio.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════ MODAL C — Value Flow Detail ═══════════════ -->
+    <div class="modal" id="modal-flow">
+      <div class="modal__overlay"></div>
+      <div class="modal__panel">
+        <div class="modal__header">
+          <div class="modal__header-icon" id="vf-modal-icon"></div>
+          <div class="modal__header-text">
+            <h2 class="modal__title" id="vf-modal-name">—</h2>
+            <p class="modal__subtitle" id="vf-modal-type">—</p>
+          </div>
+          <button class="modal__close" aria-label="Close">✕</button>
+        </div>
+        <div class="modal__body">
+          <div class="modal__section">
+            <h3 class="modal__section-title">Value Direction</h3>
+            <span class="modal-direction-badge" id="vf-modal-direction">—</span>
+          </div>
+          <div class="modal__section">
+            <h3 class="modal__section-title">Token Movement Path</h3>
+            <div class="flow-path" id="vf-modal-path"></div>
+          </div>
+          <div class="modal__section">
+            <h3 class="modal__section-title">Cross-Platform Value Change</h3>
+            <div class="modal-kv-grid">
+              <div class="modal-kv">
+                <span class="modal-kv__label">Value Transferred</span>
+                <span class="modal-kv__val" id="vf-modal-value">—</span>
+              </div>
+              <div class="modal-kv">
+                <span class="modal-kv__label">Platform Change</span>
+                <span class="modal-kv__val" id="vf-modal-change">—</span>
+              </div>
+            </div>
+          </div>
+          <div class="modal__section">
+            <h3 class="modal__section-title">Demand Weighting</h3>
+            <div class="modal-kv-grid">
+              <div class="modal-kv">
+                <span class="modal-kv__label">Demand Level</span>
+                <span class="modal-kv__val" id="vf-modal-demand">—</span>
+              </div>
+              <div class="modal-kv">
+                <span class="modal-kv__label">Multiplier</span>
+                <span class="modal-kv__val val--blue" id="vf-modal-multiplier">—</span>
+              </div>
+              <div class="modal-kv">
+                <span class="modal-kv__label">DQI Weight</span>
+                <span class="modal-kv__val" id="vf-modal-dqi">—</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
